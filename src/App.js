@@ -1,15 +1,20 @@
-import React from 'react';
-import Menu from './Menu';
-import Form from './Form'
+import React, {Component} from 'react';
+import Gallery from './components/pages/Gallery';
+import Photo from './components/pages/Photo';
+import './App.scss'
 
-const App = () => {
+class App extends Component {
+  
+  render() {
+    console.log("app render")
     return (
       <div className="App">
-        <Menu />
-        <h1>Hello, user</h1>
-        <Form/>
+        <Gallery/>
+        <Photo/>
       </div>
     );
-}
+  }
+} 
+
 
 export default App;
