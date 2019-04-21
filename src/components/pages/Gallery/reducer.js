@@ -4,6 +4,15 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-    return state;
+    console.log('Gallery', action)
+    switch (action.type) {
+        case 'SET_PHOTOS':
+            return {
+                ...state,
+                photos: [...action.photos]
+            }               
+        default:
+            return state;
+    }
 }
 
