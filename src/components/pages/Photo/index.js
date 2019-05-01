@@ -1,12 +1,25 @@
 import React from 'react';
-import './style.scss'
+import {connect} from 'react-redux';
+import { getPhoto } from './selectors';
+import formatDate from '../../../utils/formatDate';
+import './style.scss';
 
-const Photo = () => {
+const Photo = ({data}) => {
+    const { 
+        id, 
+        urls:{ raw },
+        created_at,
+    } = data;
     return (
-        <div id="photo">
-            <h1>Hello Photo</h1>
+        <div id="Photo" className="page">
+            <h1>Photo</h1>
+            <h2>{formatDate(created_at)}</h2>
+            <img key={id} src={raw} alt="" />
         </div>
     )
 }
 
-export default Photo;
+const mapStateToProps = (state, ownProps) => ({
+    data: getPhoto(state, ownProps)
+});
+export default connect(mapStateToProps)(Photo);

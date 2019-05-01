@@ -9,7 +9,7 @@ export default function () {
     return (
         <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/photo' component={Photo} />
+            <Route path='/photo/:idPhoto' component={Photo} />
             <Route path='/contacts' component={Contacts} />
             <Route path='/gallery' component={Gallery} />
         </Switch>

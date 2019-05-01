@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import formatDate from '../../../utils/formatDate'
 
 const Photo = ({photo}) => 
@@ -12,8 +13,12 @@ const Photo = ({photo}) =>
         return (
             <div className="photo">
                 <div className="wrap">
-                    <h4> { formatDate(created_at) } </h4>
-                    <img src={thumb} key={id} alt=""/>
+                    <h4>
+                        { formatDate(created_at) } 
+                    </h4>
+                    <Link to={`/photo/${id}`}>
+                        <img src={thumb} key={id} alt=""/>
+                    </Link>
                 </div>
             </div>
         )

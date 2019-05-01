@@ -2,19 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ListPhotos from './ListPhotos'
 import './style.scss'
-import { getApiPhotos } from './service';
+// import { getApiPhotos } from './service';
+import { callApiPhotosAction } from './actions';
 
 class Gallery extends Component {
 
     componentDidMount() {
         console.log('Did Mount')
-        const photosData = getApiPhotos();
-        const { setPhotos } = this.props;
-
-        photosData.then((photos)=>{
-            setPhotos(photos);
-            console.log(photos)
-        })
+        this.props.callApiPhotos();
     }
 
     render() {
@@ -22,14 +17,14 @@ class Gallery extends Component {
 
         return (
             <div id="gallery" className="page">
-                <h1>Hello Gallery</h1>
+                <h1>Gallery</h1>
                 <ListPhotos photos={ photos }/>
             </div>
         )
     }
 }
 const mapDispatchToProps = (dispatch) => ({
-    setPhotos: photos => dispatch({type:'SET_PHOTOS', photos}),
+    callApiPhotos: () => callApiPhotosAction(dispatch),
 })
 const mapStateToProps = (state) => ({
     photos: state.gallery.photos,
